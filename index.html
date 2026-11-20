@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阳泉 - NFC山西旅游攻略</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", serif;
+        }
+        body {
+            background-color: #fef9f2;
+            color: #5a3e2b;
+            line-height: 1.6;
+            padding-bottom: 30px;
+        }
+        .header {
+            background-color: #f8e9d1;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #e6c9a8;
+        }
+        .header h1 {
+            font-size: 28px;
+            color: #8b4513;
+            margin-bottom: 5px;
+        }
+        .header p {
+            font-size: 14px;
+            color: #a0522d;
+        }
+        .tab-bar {
+            display: flex;
+            background-color: #f5e6d3;
+            border-bottom: 1px solid #e6c9a8;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            font-size: 16px;
+            color: #8b4513;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .tab-btn.active {
+            background-color: #f8d7a9;
+            font-weight: bold;
+            border-bottom: 3px solid #d2691e;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .section-title {
+            font-size: 22px;
+            color: #8b4513;
+            margin: 20px 0 15px;
+            padding-left: 10px;
+            border-left: 4px solid #d2691e;
+        }
+        .item-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+            overflow: hidden;
+        }
+        .item-card img {
+            width: 100%;
+            max-height: 300px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .item-card h3 {
+            font-size: 18px;
+            color: #8b4513;
+            margin-bottom: 8px;
+        }
+        .item-card p {
+            font-size: 14px;
+            color: #6b4423;
+        }
+        .dialect-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .dialect-item {
+            background-color: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(139, 69, 19, 0.1);
+        }
+        .dialect-word {
+            font-size: 16px;
+            font-weight: bold;
+            color: #8b4513;
+        }
+        .dialect-pinyin {
+            font-size: 13px;
+            color: #a0522d;
+            margin: 3px 0;
+        }
+        .dialect-mean {
+            font-size: 14px;
+            color: #6b4423;
+        }
+        .culture-intro {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+        }
+        @media (max-width: 768px) {
+            .dialect-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>阳泉市</h1>
+        <p>煤铁之乡 · 太行门户</p>
+    </div>
+
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('route')">旅游路线</button>
+        <button class="tab-btn" onclick="switchTab('dialect')">人文方言</button>
+        <button class="tab-btn" onclick="switchTab('culture')">习俗非遗</button>
+    </div>
+
+    <!-- 旅游路线模块 -->
+    <div id="route" class="tab-content active">
+        <h2 class="section-title">常规旅游路线</h2>
+        <div class="item-card">
+            <img src="https://aka.doubaocdn.com/s/BvSMlD4Fsd" alt="娘子关">
+            <h3>娘子关</h3>
+            <p>太行的门户，万里长城的第九关，这里的瀑布与关城结合，是晋冀的咽喉，感受太行的壮阔与长城的历史，还有娘子关的传奇。</p>
+        </div>
+        <div class="item-card">
+            <img src="https://aka.doubaocdn.com/s/Q7OdnEdUuX" alt="藏山">
+            <h3>藏山</h3>
+            <p>赵氏孤儿的藏山，这里的山水秀美，藏孤洞的故事在这里流传，是三晋的名山，感受藏山的风光与赵氏孤儿的传奇。</p>
+        </div>
+        <div class="item-card">
+            <img src="https://aka.doubaocdn.com/s/uY7aKdMdCR" alt="关王庙">
+            <h3>关王庙</h3>
+            <p>全国重点文保单位，金代的古刹，寺里的古建与壁画都是国宝，感受金代的古建与关公的文化，还有阳泉的历史。</p>
+        </div>
+        <div class="item-card">
+            <img src="https://aka.doubaocdn.com/s/oL0dXGYl2V" alt="翠枫山">
+            <h3>翠枫山</h3>
+            <p>太行的自然景区，这里的山水秀美，秋天的红叶更是壮观，是天然的氧吧，感受翠枫山的风光与太行的生态。</p>
+        </div>
+        <div class="item-card">
+            <img src="https://aka.doubaocdn.com/s/S8jL4yV77j" alt="阳泉古城">
+            <h3>阳泉古城</h3>
+            <p>平定的古城，古城里的古建保存完好，古城的烟火气浓厚，晚上的古城更是灯火辉煌，感受古城的烟火气与历史。</p>
+        </div>
+
+        <h2 class="section-title">红色研学路线</h2>
+        <div class="item-card">
+            <img src="https://aka.doubaocdn.com/s/LXHUUZpjwe" alt="百团大战纪念馆">
+            <h3>百团大战纪念馆</h3>
+            <p>记录了百团大战的历史，这里是百团大战的主战场，感悟革命先辈的奉献，传承红色精神，是红色教育的基地。</p>
+        </div>
+        <div class="item-card">
+            <img src="https://aka.doubaocdn.com/s/gBZhhXcou1" alt="七亘大捷纪念馆">
+            <h3>七亘大捷纪念馆</h3>
+            <p>记录了七亘大捷的历史，刘伯承的重叠待伏的战例，打破了日军的进攻，感悟革命先辈的奉献，传承红色精神。</p>
+        </div>
+        <div class="item-card">
+            <img src="https://aka.doubaocdn.com/s/t6Aj5pwihC" alt="晋察冀军区司令部旧址">
+            <h3>晋察冀军区司令部旧址</h3>
+            <p>晋察冀抗日根据地的司令部旧址，这里记录了晋察冀的革命历程，是红色教育的基地，感悟革命先辈的奉献，传承红色精神。</p>
+        </div>
+    </div>
+
+    <!-- 人文方言模块 -->
+    <div id="dialect" class="tab-content">
+        <div class="culture-intro">
+            <h3>方言片区</h3>
+            <p>阳泉方言属晋语大包片，保留了晋语的入声，是晋东地区的特色方言，各区县口音差异较小，承载着阳泉的语言文化与历史记忆。</p>
+        </div>
+
+        <h2 class="section-title">本地方言词句</h2>
+        <div class="dialect-list">
+            <div class="dialect-item">
+                <div class="dialect-word">圪捣</div>
+                <div class="dialect-pinyin">gē dǎo</div>
+                <div class="dialect-mean">释义：捣乱、折腾</div>
+            </div>
+            <div class="dialect-item">
+                <div class="dialect-word">圪溜</div>
+                <div class="dialect-pinyin">gē liū</div>
+                <div class="dialect-mean">释义：溜达、闲逛</div>
+            </div>
+            <div class="dialect-item">
+                <div class="dialect-word">日脏</div>
+                <div class="dialect-pinyin">rì zāng</div>
+                <div class="dialect-mean">释义：脏、不干净</div>
+            </div>
+            <div class="dialect-item">
+                <div class="dialect-word">夜来</div>
+                <div class="dialect-pinyin">yè lái</div>
+                <div class="dialect-mean">释义：昨天</div>
+            </div>
+            <div class="dialect-item">
+                <div class="dialect-word">不赖</div>
+                <div class="dialect-pinyin">bù lài</div>
+                <div class="dialect-mean">释义：不错、挺好</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">人文情怀</h2>
+        <div class="culture-intro">
+            <p>阳泉是太行的门户，煤铁的宝地，这里的百姓既有晋东人的豪爽，又有太行人的坚韧。赵氏孤儿的文化在这里传承，百团大战的精神在这里延续，抗战时期，这里是晋察冀抗日根据地的核心，七亘大捷的精神深深融入了阳泉人的血脉。一代代阳泉人，用自己的双手，把煤铁的资源变成了发展的动力，也传承着这份厚重的文化与精神。</p>
+        </div>
+    </div>
+
+    <!-- 习俗非遗模块 -->
+    <div id="culture" class="tab-content">
+        <h2 class="section-title">特色美食</h2>
+        <div class="item-card">
+            <img src="https://aka.doubaocdn.com/s/5Csf7fNK33" alt="阳泉漂抿曲">
+            <h3>阳泉漂抿曲</h3>
+            <p>阳泉的特色小吃，用绿豆面制作，口感滑嫩，汤鲜味美，是当地人的最爱，也是阳泉的特色美食，傅山先生都曾赞美过它。</p>
+        </div>
+        <div class="item-card">
+            <img src="https://aka.doubaocdn.com/s/1wt7ZUrCwU" alt="平定过油肉">
+            <h3>平定过油肉</h3>
+            <p>平定的特色美食，过油肉的发源地，口感醇香，肥而不腻，是当地人的宴席必备菜，也是阳泉的特色美食，深受喜爱。</p>
+        </div>
+        <div class="item-card">
+            <img src="https://aka.doubaocdn.com/s/1GElhHgozN" alt="盂县卤面">
+            <h3>盂县卤面</h3>
+            <p>盂县的特色美食，用面条制作，蒸制而成，搭配卤汁，口感筋道，是当地人的家常饭，也是阳泉的特色美食，深受喜爱。</p>
+        </div>
+
+        <h2 class="section-title">非遗项目</h2>
+        <div class="item-card">
+            <img src="https://aka.doubaocdn.com/s/8PQNVyBaLf" alt="晋剧">
+            <h3>晋剧</h3>
+            <p>国家级非物质文化遗产，山西的地方戏曲，曲调悠扬，表演生动，是山西四大梆子之一，深受百姓喜爱，是阳泉的传统艺术。</p>
+        </div>
+        <div class="item-card">
+            <img src="https://aka.doubaocdn.com/s/TX5TEFqILZ" alt="平定武迓鼓">
+            <h3>平定武迓鼓</h3>
+            <p>国家级非物质文化遗产，平定的传统鼓乐，表演生动，鼓点激昂，是当地的传统艺术，常用于节庆活动，深受喜爱。</p>
+        </div>
+        <div class="item-card">
+            <img src="https://aka.doubaocdn.com/s/lMeU6aOYKk" alt="阳泉剪纸">
+            <h3>阳泉剪纸</h3>
+            <p>省级非物质文化遗产，阳泉的传统剪纸，色彩明艳，制作精美，是当地的传统艺术，深受喜爱，也是当地的特色礼品。</p>
+        </div>
+
+        <h2 class="section-title">传统民俗</h2>
+        <div class="culture-intro">
+            <p>阳泉的传统民俗带着浓浓的晋东特色，古城庙会历史悠久，每逢庙会，各地的商贩、艺人齐聚，热闹非凡；元宵节的闹红火更是热闹，武迓鼓、锣鼓、社火表演应有尽有。晋剧的戏曲代代传承，太行的红色精神更是深深融入了阳泉人的血脉，展现了阳泉人的质朴与坚韧，也传承着这份厚重的太行文化。</p>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            // 隐藏所有内容
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(item => {
+                item.classList.remove('active');
+            });
+            // 取消所有按钮的激活状态
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(item => {
+                item.classList.remove('active');
+            });
+            // 激活当前的
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
